@@ -18,7 +18,7 @@ st.markdown("""
         height: 100vh;
         margin: 0 20px;
         text-align: center;
-        padding-top: 20px;
+        padding-top: 30px;
     }
     .names {
         font-family: 'Caviar Dreams', sans-serif;
@@ -60,6 +60,7 @@ st.markdown("""
         font-family: 'Pacifico', cursive;
         box-shadow: 2px 2px 12px rgba(0,0,0,0.35);
         transition: background-color 0.3s ease, transform 0.2s ease;
+        min-width: 200px;
     }
     div.stButton > button:hover {
         background-color: #8b3d8b;
@@ -70,6 +71,8 @@ st.markdown("""
     .audio-player {
         margin-bottom: 30px;
         width: 320px;
+        margin-left: auto;
+        margin-right: auto;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -97,7 +100,6 @@ if st.session_state.page == "start":
     st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
     st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
 
-    # Cambia la página en sesión cuando se presiona
     if st.button("Comenzar"):
         st.session_state.page = "questions"
 
@@ -120,5 +122,3 @@ elif st.session_state.page == "questions":
     if st.button("Enviar respuestas") and not st.session_state.submitted:
         st.session_state.submitted = True
         st.success("¡Gracias por compartir conmigo! ❤️")
-
-# Listo, no hay recarga forzada ni errores
