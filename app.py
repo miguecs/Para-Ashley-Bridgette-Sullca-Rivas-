@@ -5,9 +5,10 @@ import os
 
 st.set_page_config(page_title="Para Ashley", layout="centered")
 
-# Estilos y fuentes
+# Fonts + styles
 st.markdown("""
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/caviar-dreams" rel="stylesheet">
 
     <style>
@@ -15,12 +16,6 @@ st.markdown("""
         background-color: #4b0082;
         color: black;
         font-family: 'Pacifico', cursive;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        height: 100vh;
-        margin: 0 20px;
         text-align: center;
         padding-top: 30px;
     }
@@ -28,8 +23,6 @@ st.markdown("""
         font-family: 'Caviar Dreams', sans-serif;
         font-size: 4rem;
         color: black;
-        max-width: 600px;
-        margin: 10px auto;
     }
     .single-line {
         white-space: nowrap;
@@ -43,48 +36,53 @@ st.markdown("""
         color: black;
         font-family: 'Pacifico', cursive;
         max-width: 400px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         margin-left: auto;
         margin-right: auto;
     }
+    .audio-player {
+        margin: 30px auto;
+        width: 320px;
+    }
+    .love-message {
+        font-size: 2rem;
+        color: white;
+        max-width: 700px;
+        margin: 30px auto;
+        line-height: 1.6;
+        font-family: 'Pacifico', cursive;
+    }
+    .final-message {
+        font-family: 'Great Vibes', cursive;
+        font-size: 3rem;
+        color: white;
+        margin-top: 60px;
+    }
     div.stButton {
         margin-top: 40px;
-        width: 100%;
         display: flex;
         justify-content: center;
     }
     div.stButton > button {
-        font-size: 24px;
-        padding: 15px 50px;
-        cursor: pointer;
+        font-size: 20px;
+        padding: 15px 40px;
         border-radius: 20px;
         background-color: #a64ca6;
-        border: none;
         color: black;
+        border: none;
         font-family: 'Pacifico', cursive;
         box-shadow: 2px 2px 12px rgba(0,0,0,0.35);
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        min-width: 200px;
     }
     div.stButton > button:hover {
         background-color: #8b3d8b;
         color: white;
         transform: scale(1.05);
-        box-shadow: 3px 3px 15px rgba(0,0,0,0.45);
-    }
-    .audio-player {
-        margin-bottom: 30px;
-        width: 320px;
-        margin-left: auto;
-        margin-right: auto;
+        transition: 0.3s ease;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# URL directa de la canción
+# Música
 audio_url = "https://github.com/miguecs/Para-Ashley-Bridgette-Sullca-Rivas-/raw/main/Elvis%20Presley%20-%20Can't%20Help%20Falling%20In%20Love.mp3"
-
-# Música siempre visible y centrada
 st.markdown(f"""
 <div class="audio-player">
   <audio autoplay loop controls style="width: 100%;">
@@ -94,24 +92,19 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# Estado inicial
+# Páginas
 if 'page' not in st.session_state:
-    st.session_state.page = "start"
+    st.session_state.page = "inicio"
 
-if 'submitted' not in st.session_state:
-    st.session_state.submitted = False
-
-# Página inicial
-if st.session_state.page == "start":
+if st.session_state.page == "inicio":
     st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
     st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
     st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
 
     if st.button("Comenzar"):
-        st.session_state.page = "questions"
+        st.session_state.page = "preguntas"
 
-# Página de preguntas
-elif st.session_state.page == "questions":
+elif st.session_state.page == "preguntas":
     st.markdown('<h2 style="color: white;">Quiero conocerte mejor, responde porfa 😊</h2>', unsafe_allow_html=True)
 
     preguntas = [
@@ -127,23 +120,47 @@ elif st.session_state.page == "questions":
         respuesta = st.text_area(f"Pregunta {i}: {pregunta}", key=f"p{i}")
         respuestas.append(respuesta)
 
-    if st.button("Enviar respuestas") and not st.session_state.submitted:
-        st.session_state.submitted = True
-        st.success("¡Gracias por compartir conmigo! ❤️")
+    if st.button("Enviar respuestas"):
+        st.session_state.page = "carta"
 
-        # Guardar en archivo CSV
-        respuestas_dict = {
+        # Guardar en CSV
+        df = pd.DataFrame({
             "timestamp": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")],
             "pregunta_1": [respuestas[0]],
             "pregunta_2": [respuestas[1]],
             "pregunta_3": [respuestas[2]],
             "pregunta_4": [respuestas[3]],
             "pregunta_5": [respuestas[4]],
-        }
-
-        df = pd.DataFrame(respuestas_dict)
+        })
 
         if os.path.exists("respuestas.csv"):
             df.to_csv("respuestas.csv", mode='a', header=False, index=False)
         else:
             df.to_csv("respuestas.csv", index=False)
+
+elif st.session_state.page == "carta":
+    st.success("¡Gracias por compartir conmigo! ❤️")
+
+    if st.button("Continuar"):
+        st.session_state.page = "mensaje_final"
+
+elif st.session_state.page == "mensaje_final":
+    st.markdown(f"""
+    <div class="love-message">
+        <p>Ashley:</p>
+        <p>No estás leyendo cualquier carta, estás leyendo un pedacito de lo que hay dentro de mí.</p>
+        <p>Quiero que sepas algo: no importa cuánto tiempo pase, si tengo que esperar años o incluso décadas, lo haré. Porque tú vales eso y mucho más.</p>
+        <p>Quiero ser alguien que te acompañe en lo bueno y lo difícil. No porque sea perfecto, sino porque mi intención contigo es verdadera. Quiero cuidarte, con paciencia, con respeto, y sobre todo, con amor.</p>
+        <p>Sé que las palabras pueden ser bonitas, pero mis acciones con el tiempo quiero que las respalden. Estoy aquí para ti. Siempre.</p>
+        <p>— Miguel</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    if st.button("Ver algo más bonito ❤️"):
+        st.markdown(f"""
+        <div class="final-message">
+            Que eres la mormona que más quiero,<br>
+            la loca que más adoro<br>
+            y el ángel que quiero en mi vida.
+        </div>
+        """, unsafe_allow_html=True)
