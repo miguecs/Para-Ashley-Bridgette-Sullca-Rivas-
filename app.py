@@ -2,6 +2,11 @@ import streamlit as st
 
 st.set_page_config(page_title="Para Ashley", layout="centered")
 
+# Insertar audio
+audio_url = "https://www.example.com/cant_help_falling_in_love.mp3"  # Cambia por un enlace válido
+
+st.audio(audio_url, format='audio/mp3', start_time=0)
+
 st.markdown("""
     <!-- Cargar fuente Pacifico para mensaje y botón -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
