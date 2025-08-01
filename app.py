@@ -111,7 +111,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Música
 audio_url = "https://github.com/miguecs/Para-Ashley-Bridgette-Sullca-Rivas-/raw/main/Elvis%20Presley%20-%20Can't%20Help%20Falling%20In%20Love.mp3"
 st.markdown(f"""
 <div class="audio-player">
@@ -122,7 +121,6 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# Estado inicial
 if 'page' not in st.session_state:
     st.session_state.page = "inicio"
 if 'selected_card' not in st.session_state:
@@ -134,11 +132,11 @@ if st.session_state.page == "inicio":
     st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
     st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
 
-    if st.button("Comenzar"):
+    if st.button("💌Comenzar💌"):
         st.session_state.page = "preguntas"
 
 elif st.session_state.page == "preguntas":
-    st.markdown('<h2 style="color: white;">Quiero conocerte mejor, responde porfa</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="color: white;">Quiero conocerte mejor, responde porfa 😊</h2>', unsafe_allow_html=True)
 
     preguntas = [
         "¿Cuál es tu sueño más grande?",
@@ -172,7 +170,7 @@ elif st.session_state.page == "preguntas":
             df.to_csv("respuestas.csv", index=False)
 
 elif st.session_state.page == "carta":
-    st.success("¡Gracias por compartir conmigo!")
+    st.success("❤️¡Gracias por compartir conmigo!❤️")
 
     if st.button("Continuar"):
         st.session_state.page = "mensaje_final"
@@ -189,7 +187,7 @@ elif st.session_state.page == "mensaje_final":
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("Ver algo más bonito"):
+    if st.button("Ver algo más bonito 🎁"):
         st.session_state.page = "gran_mensaje"
 
 elif st.session_state.page == "gran_mensaje":
@@ -210,16 +208,16 @@ elif st.session_state.page == "cartas_abrelo":
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        if st.button("Estés Triste"):
+        if st.button("😔 Estés Triste 😔"):
             st.session_state.selected_card = "triste"
     with col2:
-        if st.button("Dudes de Mí"):
+        if st.button("🤔 Dudes de Mí 🤔"):
             st.session_state.selected_card = "dudas"
     with col3:
-        if st.button("Quieras Recordar que Te Amo"):
+        if st.button("❤️ Quieras Recordar que Te Amo ❤️"):
             st.session_state.selected_card = "amo"
 
-    # Mostrar mensaje según botón elegido
+
     if st.session_state.selected_card == "triste":
         st.markdown("""
         <div class="card-message">
@@ -239,7 +237,7 @@ elif st.session_state.page == "cartas_abrelo":
         </div>
         """, unsafe_allow_html=True)
 
-    if st.button("Ver Mi Promesa Para Ti"):
+    if st.button("🌹Ver Mi Promesa Para Ti🌹"):
         st.session_state.page = "promesa"
 
 elif st.session_state.page == "promesa":
@@ -254,6 +252,6 @@ elif st.session_state.page == "promesa":
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("Volver al Mensaje Bonito"):
+    if st.button("🌹 Volver al Mensaje Bonito 🌹"):
         st.session_state.page = "gran_mensaje"
 
