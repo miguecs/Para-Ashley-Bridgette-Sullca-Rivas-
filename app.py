@@ -69,27 +69,51 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
-st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
-st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
-
 audio_url = "https://github.com/miguecs/Para-Ashley-Bridgette-Sullca-Rivas-/raw/main/Elvis%20Presley%20-%20Can't%20Help%20Falling%20In%20Love.mp3"
 
-if st.button("Comenzar"):
-    st.markdown(f"""
-    <audio autoplay loop controls>
-      <source src="{audio_url}" type="audio/mpeg">
-      Tu navegador no soporta el elemento de audio.
-    </audio>
-    """, unsafe_allow_html=True)
+# Música siempre sonando en background (oculto pero con controles por si quiere pausar)
+st.markdown(f"""
+<audio autoplay loop controls style="position: fixed; bottom: 10px; left: 10px; width: 300px; z-index: 9999;">
+  <source src="{audio_url}" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+""", unsafe_allow_html=True)
 
-    # Mostrar preguntas
-    st.markdown('<h2 style="color: white;">Pregunta 1</h2>', unsafe_allow_html=True)
-    respuesta1 = st.text_input("¿Cuál es tu canción favorita?", key="p1")
+# Inicializamos la página si no existe
+if 'page' not in st.session_state:
+    st.session_state.page = "start"
 
-    st.markdown('<h2 style="color: white;">Pregunta 2</h2>', unsafe_allow_html=True)
-    respuesta2 = st.text_area("¿Qué es lo que más te gusta de ella?", key="p2")
+if st.session_state.page == "start":
+    # Pantalla inicial
+    st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
+    st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
+    st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
+    if st.button("Comenzar"):
+        st.session_state.page = "questions"
+        st.experimental_rerun()
+
+elif st.session_state.page == "questions":
+    # Preguntas para conocerla
+    st.markdown('<h2 style="color: white;">Quiero conocerte mejor, responde porfa 😊</h2>', unsafe_allow_html=True)
+
+    preguntas = [
+        "¿Cuál es tu sueño más grande?",
+        "¿Qué te hace feliz de verdad?",
+        "¿Cuál es tu recuerdo favorito de la infancia?",
+        "¿Qué valoras más en una amistad?",
+        "¿Qué te gustaría que supiera sobre ti?"
+    ]
+
+    respuestas = []
+    for i, pregunta in enumerate(preguntas, 1):
+        respuesta = st.text_area(f"Pregunta {i}: {pregunta}", key=f"p{i}")
+        respuestas.append(respuesta)
 
     if st.button("Enviar respuestas"):
-        st.success("¡Gracias por tus respuestas!")
-        # Aquí podrías guardar las respuestas, procesarlas, etc.
+        # Aquí puedes hacer lo que quieras con las respuestas, guardarlas o mostrarlas
+        st.success("¡Gracias por compartir conmigo! ❤️")
+        # Por ejemplo mostrar resumen:
+        st.markdown("### Tus respuestas:")
+        for i, (p, r) in enumerate(zip(preguntas, respuestas), 1):
+            st.markdown(f"**{i}. {p}**")
+            st.markdown(f"> {r if r else '_Sin respuesta_'}")
