@@ -17,7 +17,7 @@ st.markdown("""
         margin: 0 20px;
         text-align: center;
     }
-    h2 {
+    .header-text {
         font-size: 4rem;
         margin: 0.2rem 0;
         font-weight: normal;
@@ -27,10 +27,12 @@ st.markdown("""
         padding: 20px 40px;
         background: rgba(255, 255, 255, 0.15); /* cuadro transparente */
         border-radius: 15px;
-        font-size: 1.8rem;
+        font-size: 4rem;  /* mismo tamaño que encabezados */
         color: black;
         font-family: 'Pacifico', cursive;
         max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
     }
     div.stButton {
         margin-top: 50px;
@@ -57,10 +59,9 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<h2>DE: Miguel Caso Poma</h2>", unsafe_allow_html=True)
-st.markdown("<h2>PARA: Ashley Sullca Rivas</h2>", unsafe_allow_html=True)
+st.markdown('<h2 class="header-text">DE: Miguel Caso Poma</h2>', unsafe_allow_html=True)
+st.markdown('<h2 class="header-text">PARA: Ashley Sullca Rivas</h2>', unsafe_allow_html=True)
 
-# Control para mostrar mensaje solo después de pulsar botón
 if "clicked" not in st.session_state:
     st.session_state.clicked = False
 
