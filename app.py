@@ -294,7 +294,3 @@ elif st.session_state.page == "final_final":
         <p><strong> Miguel Caso 💌</strong></p>
     </div>
     """, unsafe_allow_html=True)
-
-        if st.button("🌹 Volver a las cartas 🌹"):
-        st.session_state.page = "cartas_abrelo"
-        st.session_state.selected_card = None
