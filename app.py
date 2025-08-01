@@ -10,7 +10,11 @@ st.markdown("""
 
     <style>
     .stApp {
-        background-color: #4b0082;  /* morado oscuro */
+        background-color: #4b0082; /* morado oscuro */
+        background-image: radial-gradient(circle, rgba(255, 192, 203, 0.15) 10%, transparent 11%), 
+                          radial-gradient(circle, rgba(255, 192, 203, 0.15) 10%, transparent 11%);
+        background-position: 0 0, 25px 25px;
+        background-size: 50px 50px;
         color: black;
         font-family: 'Pacifico', cursive;
         display: flex;
@@ -28,7 +32,6 @@ st.markdown("""
         max-width: 600px;
         margin: 10px auto;
     }
-    /* Para que el nombre de Ashley no haga salto de línea */
     .single-line {
         white-space: nowrap;
     }
