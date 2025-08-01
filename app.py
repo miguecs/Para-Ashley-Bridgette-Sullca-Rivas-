@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Para Ashley 💖", layout="centered")
+st.set_page_config(page_title="Para Ashley", layout="centered")
 
 st.markdown("""
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -62,13 +62,13 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<h2>DE: Miguel Caso Poma</h2>", unsafe_allow_html=True)
-st.markdown("<h2>PARA: Ashley Sullca Rivas</h2>", unsafe_allow_html=True)
+st.markdown("<h2>De: Miguel Caso</h2>", unsafe_allow_html=True)
+st.markdown("<h2>Para: Ashley Sullca Rivas</h2>", unsafe_allow_html=True)
 
 if "clicked" not in st.session_state:
     st.session_state.clicked = False
 
-if st.button("💌 Comenzar"):
+if st.button("Comenzar"):
     st.session_state.clicked = True
 
 if st.session_state.clicked:
