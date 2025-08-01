@@ -17,11 +17,11 @@ st.markdown("""
         margin: 0 20px;
         text-align: center;
     }
-    .names, .confirmation-box {
-        font-size: 1.8rem;
+    .names {
+        font-size: 4rem;       /* Nombres grandes */
         color: black;
         font-family: 'Pacifico', cursive;
-        max-width: 400px;
+        max-width: 600px;
         margin: 10px auto;
     }
     .confirmation-box {
@@ -29,7 +29,13 @@ st.markdown("""
         padding: 20px 40px;
         background: rgba(255, 255, 255, 0.15); /* cuadro transparente */
         border-radius: 15px;
+        font-size: 1.8rem;     /* mensaje más pequeño */
+        color: black;
+        font-family: 'Pacifico', cursive;
+        max-width: 400px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        margin-left: auto;
+        margin-right: auto;
     }
     div.stButton {
         margin-top: 40px;
