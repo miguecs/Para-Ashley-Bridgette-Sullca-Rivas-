@@ -71,28 +71,28 @@ st.markdown("""
 
 audio_url = "https://github.com/miguecs/Para-Ashley-Bridgette-Sullca-Rivas-/raw/main/Elvis%20Presley%20-%20Can't%20Help%20Falling%20In%20Love.mp3"
 
-# Insertar audio con autoplay desde el inicio (puede que el navegador lo bloquee)
-st.markdown(f"""
-<audio autoplay loop controls style="display:none;">
-  <source src="{audio_url}" type="audio/mpeg">
-  Tu navegador no soporta el elemento de audio.
-</audio>
-""", unsafe_allow_html=True)
-
-# Controlar flujo con session_state
+# Inicializar variable en session_state para saber si ya comenzó
 if 'started' not in st.session_state:
     st.session_state.started = False
 
 if not st.session_state.started:
-    # Pantalla inicial
+    # Mostrar pantalla inicial
     st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
     st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
     st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
 
     if st.button("Comenzar"):
         st.session_state.started = True
-        st.experimental_rerun()
+        st.experimental_rerun()  # Recarga para mostrar preguntas y audio
 else:
+    # Reproducir música
+    st.markdown(f"""
+    <audio autoplay loop controls style="display:none;">
+      <source src="{audio_url}" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+    """, unsafe_allow_html=True)
+
     # Mostrar preguntas
     st.markdown('<h2 style="color: white;">Pregunta 1</h2>', unsafe_allow_html=True)
     respuesta1 = st.text_input("¿Cuál es tu canción favorita?", key="p1")
@@ -102,3 +102,4 @@ else:
 
     if st.button("Enviar respuestas"):
         st.success("¡Gracias por tus respuestas!")
+        # Aquí podrías guardar las respuestas, procesarlas, etc.
