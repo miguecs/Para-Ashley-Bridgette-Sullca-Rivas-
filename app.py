@@ -2,10 +2,6 @@ import streamlit as st
 
 st.set_page_config(page_title="Para Ashley", layout="centered")
 
-# Inicializar estado del botón
-if "clicked" not in st.session_state:
-    st.session_state.clicked = False
-
 st.markdown("""
     <!-- Cargar fuente Pacifico para mensaje y botón -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -15,7 +11,7 @@ st.markdown("""
     <style>
     .stApp {
         background-color: #4b0082;  /* morado oscuro */
-        color: white;  /* Cambié a blanco para mejor contraste */
+        color: black;
         font-family: 'Pacifico', cursive;
         display: flex;
         flex-direction: column;
@@ -28,7 +24,7 @@ st.markdown("""
     .names {
         font-family: 'Caviar Dreams', sans-serif;
         font-size: 4rem;
-        color: white;  /* Cambié a blanco */
+        color: black;
         max-width: 600px;
         margin: 10px auto;
     }
@@ -42,7 +38,7 @@ st.markdown("""
         background: rgba(255, 255, 255, 0.15);
         border-radius: 15px;
         font-size: 1.8rem;
-        color: white; /* Cambié a blanco */
+        color: black;
         font-family: 'Pacifico', cursive;
         max-width: 400px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -51,12 +47,9 @@ st.markdown("""
     }
     div.stButton {
         margin-top: 40px;
-        max-width: 300px;
-        margin-left: auto;
-        margin-right: auto;
+        width: 100%;
         display: flex;
         justify-content: center;
-        width: 100%;
     }
     div.stButton > button {
         font-size: 24px;
@@ -82,9 +75,7 @@ st.markdown("""
 st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
 st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
 
-if not st.session_state.clicked:
-    st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
-    if st.button("Comenzar"):
-        st.session_state.clicked = True
-else:
-    st.markdown('<div class="confirmation-box">¡Has comenzado!</div>', unsafe_allow_html=True)
+st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
+
+if st.button("Comenzar"):
+    st.session_state.clicked = True
