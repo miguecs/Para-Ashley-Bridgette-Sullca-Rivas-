@@ -52,7 +52,7 @@ st.markdown("""
         font-family: 'Caviar Dreams', sans-serif;
     }
     .final-message {
-        font-family: 'Great Vibes', cursive;
+        font-family: 'Caviar Dreams', sans-serif;
         font-size: 3.5rem;
         color: white;
         margin-top: 80px;
