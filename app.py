@@ -163,8 +163,8 @@ elif st.session_state.page == "mensaje_final":
 elif st.session_state.page == "gran_mensaje":
     st.markdown(f"""
     <div class="final-message">
-        Que eres la mormona que más quiero,<br>
-        la loca que más adoro<br>
-        y el ángel que quiero en mi vida.
+        ¡QUE ERES LA MORMONA QUE MÁS QUIERO,<br>
+        LA LOCA QUE MÁS ADORO<br>
+        Y EL ÁNGEL QUE QUIERO EN MI VIDA!
     </div>
     """, unsafe_allow_html=True)
