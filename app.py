@@ -2,8 +2,8 @@ import streamlit as st
 
 st.set_page_config(page_title="Para Ashley", layout="centered")
 
-# Cambia esto con tu enlace directo de Google Drive (ver instrucciones arriba)
-audio_url = https://drive.google.com/uc?export=download&id=1CxfoHF4Lx-lsC7e99y3Bnw-i_j__miM_
+# ✅ Enlace directo al mp3 desde Google Drive
+audio_url = "https://drive.google.com/uc?export=download&id=1CxfoHF4Lx-lsC7e99y3Bnw-i_j__miM_"
 
 # Inicializar estado
 if "clicked" not in st.session_state:
@@ -16,7 +16,7 @@ if not st.session_state.music_playing:
     if st.button("▶️ Reproducir música"):
         st.session_state.music_playing = True
 
-# Inyectar reproductor de audio HTML con autoplay/loop
+# Inyectar reproductor de audio con autoplay y loop
 if st.session_state.music_playing:
     audio_html = f"""
     <audio autoplay loop>
@@ -26,7 +26,7 @@ if st.session_state.music_playing:
     """
     st.markdown(audio_html, unsafe_allow_html=True)
 
-# HTML y estilos
+# Estilos e interfaz
 st.markdown("""
     <!-- Cargar fuente Pacifico para mensaje y botón -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -102,5 +102,6 @@ st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', un
 
 st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
 
+# Botón de comenzar
 if st.button("Comenzar"):
     st.session_state.clicked = True
