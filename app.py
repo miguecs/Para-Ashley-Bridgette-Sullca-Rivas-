@@ -89,6 +89,9 @@ st.markdown(f"""
 if 'page' not in st.session_state:
     st.session_state.page = "start"
 
+if 'submitted' not in st.session_state:
+    st.session_state.submitted = False
+
 if st.session_state.page == "start":
     st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
     st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
@@ -113,9 +116,6 @@ elif st.session_state.page == "questions":
         respuesta = st.text_area(f"Pregunta {i}: {pregunta}", key=f"p{i}")
         respuestas.append(respuesta)
 
-    if st.button("Enviar respuestas"):
+    if st.button("Enviar respuestas") and not st.session_state.submitted:
+        st.session_state.submitted = True
         st.success("¡Gracias por compartir conmigo! ❤️")
-        st.markdown("### Tus respuestas:")
-        for i, (p, r) in enumerate(zip(preguntas, respuestas), 1):
-            st.markdown(f"**{i}. {p}**")
-            st.markdown(f"> {r if r else '_Sin respuesta_'}")
