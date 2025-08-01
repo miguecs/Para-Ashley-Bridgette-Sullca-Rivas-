@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="Para Ashley", layout="centered")
 
 # Cambia este enlace por el link real donde alojas la canción
-audio_url = "https://tu-repositorio.com/cant_help_falling_in_love.mp3"
+audio_url = https://github.com/miguecs/Para-Ashley-Bridgette-Sullca-Rivas-/blob/main/Elvis%20Presley%20-%20Can't%20Help%20Falling%20In%20Love.mp3
 
 # Código HTML para reproducir audio automáticamente y en loop sin controles visibles
 audio_html = f"""
