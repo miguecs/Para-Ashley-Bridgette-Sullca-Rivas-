@@ -272,3 +272,22 @@ elif st.session_state.page == "promesa":
 
     if st.button("🌹 Volver al Mensaje Bonito 🌹"):
         st.session_state.page = "gran_mensaje"
+
+elif st.session_state.page == "final_final":
+    st.markdown("""
+    <div class="final-message">
+        GRACIAS POR LLEGAR HASTA AQUÍ ❤️<br>
+        ESTE ES EL FINAL DE ESTE PEQUEÑO REGALO,<br>
+        PERO NO EL FINAL DE TODO LO QUE QUIERO CONTIGO.
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="love-message">
+        <p>Gracias por tomarte el tiempo de leer cada palabra, responder con sinceridad, y llegar hasta aquí.</p>
+        <p>Todo esto lo hice desde el corazón, porque tú, Ashley, eres la persona que más quiero en este mundo.</p>
+        <p>Esto no termina aquí, nuestro viaje apenas comienza. 💜</p>
+        <p><strong>— Miguel Caso 💌</strong></p>
+    </div>
+    """, unsafe_allow_html=True)
+
