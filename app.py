@@ -82,3 +82,14 @@ if st.button("Comenzar"):
       Tu navegador no soporta el elemento de audio.
     </audio>
     """, unsafe_allow_html=True)
+
+    # Mostrar preguntas
+    st.markdown('<h2 style="color: white;">Pregunta 1</h2>', unsafe_allow_html=True)
+    respuesta1 = st.text_input("¿Cuál es tu canción favorita?", key="p1")
+
+    st.markdown('<h2 style="color: white;">Pregunta 2</h2>', unsafe_allow_html=True)
+    respuesta2 = st.text_area("¿Qué es lo que más te gusta de ella?", key="p2")
+
+    if st.button("Enviar respuestas"):
+        st.success("¡Gracias por tus respuestas!")
+        # Aquí podrías guardar las respuestas, procesarlas, etc.
