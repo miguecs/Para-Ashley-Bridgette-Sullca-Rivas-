@@ -253,11 +253,11 @@ elif st.session_state.page == "promesa":
     if st.button("🌹 Volver al Mensaje Bonito 🌹"):
         st.session_state.page = "gran_mensaje"
 
-    st.markdown("#### Botón para descifrar")
+    st.markdown("#### Botón para descifrar!!")
 
-    fecha_input = st.text_input("Ingresa la fecha importante (formato: DD-MM-AAAA)", placeholder="Ej. 24-06-2023")
+    fecha_input = st.text_input("Ingresa la fecha importante (Pista: 5:00 am) (Formato: DD-MM-AAAA)", placeholder="Ej. 16-03-2020")
 
-    if st.button("Descifrar Mensaje"):
+    if st.button("🤨Descifrar Mensaje🤨"):
         fecha_correcta = "24-06-2023"  # <-- Cambia esto por la fecha que tú consideres especial
 
         if fecha_input.strip() == fecha_correcta:
