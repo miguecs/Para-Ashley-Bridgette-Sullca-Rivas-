@@ -44,18 +44,19 @@ st.markdown("""
         width: 320px;
     }
     .love-message {
-        font-size: 2rem;
+        font-size: 1.6rem;
         color: white;
-        max-width: 700px;
+        max-width: 750px;
         margin: 30px auto;
-        line-height: 1.6;
-        font-family: 'Pacifico', cursive;
+        line-height: 1.7;
+        font-family: 'Caviar Dreams', sans-serif;
     }
     .final-message {
         font-family: 'Great Vibes', cursive;
-        font-size: 3rem;
+        font-size: 3.5rem;
         color: white;
-        margin-top: 60px;
+        margin-top: 80px;
+        line-height: 1.6;
     }
     div.stButton {
         margin-top: 40px;
@@ -157,10 +158,13 @@ elif st.session_state.page == "mensaje_final":
     """, unsafe_allow_html=True)
 
     if st.button("Ver algo más bonito ❤️"):
-        st.markdown(f"""
-        <div class="final-message">
-            Que eres la mormona que más quiero,<br>
-            la loca que más adoro<br>
-            y el ángel que quiero en mi vida.
-        </div>
-        """, unsafe_allow_html=True)
+        st.session_state.page = "gran_mensaje"
+
+elif st.session_state.page == "gran_mensaje":
+    st.markdown(f"""
+    <div class="final-message">
+        Que eres la mormona que más quiero,<br>
+        la loca que más adoro<br>
+        y el ángel que quiero en mi vida.
+    </div>
+    """, unsafe_allow_html=True)
