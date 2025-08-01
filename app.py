@@ -2,35 +2,8 @@ import streamlit as st
 
 st.set_page_config(page_title="Para Ashley", layout="centered")
 
-# ✅ Enlace directo al mp3 desde Google Drive
-audio_url = "https://drive.google.com/uc?export=download&id=1CxfoHF4Lx-lsC7e99y3Bnw-i_j__miM_"
-
-# Inicializar estado
-if "clicked" not in st.session_state:
-    st.session_state.clicked = False
-if "music_playing" not in st.session_state:
-    st.session_state.music_playing = False
-
-# Botón para iniciar música
-if not st.session_state.music_playing:
-    if st.button("▶️ Reproducir música"):
-        st.session_state.music_playing = True
-
-# Inyectar reproductor de audio con autoplay y loop
-if st.session_state.music_playing:
-    audio_html = f"""
-    <audio autoplay loop>
-        <source src="{audio_url}" type="audio/mp3">
-        Tu navegador no soporta audio.
-    </audio>
-    """
-    st.markdown(audio_html, unsafe_allow_html=True)
-
-# Estilos e interfaz
 st.markdown("""
-    <!-- Cargar fuente Pacifico para mensaje y botón -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <!-- Cargar fuente Caviar Dreams para nombres -->
     <link href="https://fonts.cdnfonts.com/css/caviar-dreams" rel="stylesheet">
 
     <style>
@@ -96,12 +69,18 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Mensajes en pantalla
 st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
 st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
-
 st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
 
-# Botón de comenzar
+audio_url = "https://github.com/miguecs/Para-Ashley-Bridgette-Sullca-Rivas-/raw/main/Elvis%20Presley%20-%20Can't%20Help%20Falling%20In%20Love.mp3"
+
+st.markdown(f"""
+<audio autoplay loop controls style="display:none;">
+  <source src="{audio_url}" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+""", unsafe_allow_html=True)
+
 if st.button("Comenzar"):
     st.session_state.clicked = True
