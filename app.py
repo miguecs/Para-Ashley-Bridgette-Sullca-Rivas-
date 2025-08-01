@@ -188,10 +188,6 @@ elif st.session_state.page == "mensaje_final":
     if st.button("Ver algo más bonito 🎁"):
         st.session_state.page = "gran_mensaje"
 
-    if st.button("🌹 Volver a las cartas 🌹"):
-        st.session_state.page = "cartas_abrelo"
-        st.session_state.selected_card = None
-
 elif st.session_state.page == "gran_mensaje":
     st.markdown(f"""
     <div class="final-message">
@@ -204,10 +200,6 @@ elif st.session_state.page == "gran_mensaje":
     if st.button("Ábrelo el día que..."):
         st.session_state.selected_card = None
         st.session_state.page = "cartas_abrelo"
-
-    if st.button("🌹 Volver a las cartas 🌹"):
-        st.session_state.page = "cartas_abrelo"
-        st.session_state.selected_card = None
 
 elif st.session_state.page == "cartas_abrelo":
     st.markdown('<h2 style="color: white; font-family: Caviar Dreams, sans-serif;">Ábrelo el día que...</h2>', unsafe_allow_html=True)
@@ -277,10 +269,6 @@ elif st.session_state.page == "promesa":
                 """, unsafe_allow_html=True)
             else:
                 st.error("Fecha incorrecta. Intenta de nuevo con la fecha que marcó un antes y un después.")
-
-    if st.button("🌹 Volver a las cartas 🌹"):
-        st.session_state.page = "cartas_abrelo"
-        st.session_state.selected_card = None
 
     if st.button("🌹 Volver al Mensaje Bonito 🌹"):
         st.session_state.page = "gran_mensaje"
