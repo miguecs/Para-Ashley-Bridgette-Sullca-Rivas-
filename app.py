@@ -68,8 +68,8 @@ st.markdown("<h2>Para: Ashley Sullca Rivas</h2>", unsafe_allow_html=True)
 if "clicked" not in st.session_state:
     st.session_state.clicked = False
 
-if st.button("Comenzar"):
-    st.session_state.clicked = True
-
 if st.session_state.clicked:
     st.markdown('<div class="confirmation-box">¡Listo para empezar! ❤️</div>', unsafe_allow_html=True)
+
+if st.button("Comenzar"):
+    st.session_state.clicked = True
