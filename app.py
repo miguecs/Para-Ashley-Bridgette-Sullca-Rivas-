@@ -138,7 +138,7 @@ if st.session_state.page == "inicio":
         st.session_state.page = "preguntas"
 
 elif st.session_state.page == "preguntas":
-    st.markdown('<h2 style="color: white;">Quiero conocerte mejor, responde porfa 😊</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="color: white;">Quiero conocerte mejor, responde porfa</h2>', unsafe_allow_html=True)
 
     preguntas = [
         "¿Cuál es tu sueño más grande?",
@@ -172,7 +172,7 @@ elif st.session_state.page == "preguntas":
             df.to_csv("respuestas.csv", index=False)
 
 elif st.session_state.page == "carta":
-    st.success("¡Gracias por compartir conmigo! ❤️")
+    st.success("¡Gracias por compartir conmigo!")
 
     if st.button("Continuar"):
         st.session_state.page = "mensaje_final"
@@ -185,19 +185,19 @@ elif st.session_state.page == "mensaje_final":
         <p>Quiero que sepas algo: no importa cuánto tiempo pase, si tengo que esperar años o incluso décadas, lo haré. Porque tú vales eso y mucho más.</p>
         <p>Quiero ser alguien que te acompañe en lo bueno y lo difícil. No porque sea perfecto, sino porque mi intención contigo es verdadera. Quiero cuidarte, con paciencia, con respeto, y sobre todo, con amor.</p>
         <p>Sé que las palabras pueden ser bonitas, pero mis acciones con el tiempo quiero que las respalden. Estoy aquí para ti. Siempre.</p>
-        <p>— Miguel</p>
+        <p> Miguel Caso</p>
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("Ver algo más bonito ❤️"):
+    if st.button("Ver algo más bonito"):
         st.session_state.page = "gran_mensaje"
 
 elif st.session_state.page == "gran_mensaje":
     st.markdown(f"""
     <div class="final-message">
-        Que eres la mormona que más quiero,<br>
-        la loca que más adoro<br>
-        y el ángel que quiero en mi vida.
+        ¡QUE ERES LA MORMONA QUE MÁS QUIERO,<br>
+        LA LOCA QUE MÁS ADORO<br>
+        Y EL ÁNGEL QUE QUIERO EN MI VIDA!
     </div>
     """, unsafe_allow_html=True)
 
@@ -210,36 +210,36 @@ elif st.session_state.page == "cartas_abrelo":
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        if st.button("Estés triste 😔"):
+        if st.button("Estés Triste"):
             st.session_state.selected_card = "triste"
     with col2:
-        if st.button("Dudes de mí 💭"):
+        if st.button("Dudes de Mí"):
             st.session_state.selected_card = "dudas"
     with col3:
-        if st.button("Quieras recordar que te amo ❤️"):
+        if st.button("Quieras Recordar que Te Amo"):
             st.session_state.selected_card = "amo"
 
     # Mostrar mensaje según botón elegido
     if st.session_state.selected_card == "triste":
         st.markdown("""
         <div class="card-message">
-            <p>Mi amor, si estás triste, recuerda que después de la tormenta siempre llega la calma. Estoy aquí para ti, aunque no lo veas, siempre te estoy cuidando con mi amor infinito.</p>
+            <p>Sé que ahora puede que te sientas triste, pero quiero que recuerdes algo muy importante, nunca estarás sola. Siempre estaré aquí, a tu lado, para apoyarte, escucharte y ofrecerte todo mi amor. Las dificultades pueden parecer grandes en este momento, pero quiero que sepas que juntos podemos enfrentarlas. Mi hombro estará siempre disponible, y mi corazón, siempre contigo. Te amo, y no importa lo que pase, siempre estaré para ti..</p>
         </div>
         """, unsafe_allow_html=True)
     elif st.session_state.selected_card == "dudas":
         st.markdown("""
         <div class="card-message">
-            <p>Cuando dudes de mí, mira hacia atrás y ve todo lo que hemos vivido, lo mucho que he dado y lo sincero que soy. Confía en que mi amor por ti es verdadero y sin condiciones.</p>
+            <p>Cuando sientas dudas, quiero que mires atrás y veas todo lo que hemos construido juntos, cada momento que hemos compartido, cada sacrificio que he hecho por ti. Verás lo mucho que te he dado, lo sincero que siempre he sido y cómo mi amor por ti no tiene límites ni condiciones. Confía en lo que somos, porque lo que siento por ti es verdadero, profundo y eterno. Siempre estaré aquí, a tu lado, sin importar lo que pase.</p>
         </div>
         """, unsafe_allow_html=True)
     elif st.session_state.selected_card == "amo":
         st.markdown("""
         <div class="card-message">
-            <p>Si quieres recordar que te amo, mira este mensaje y siente mi corazón latiendo por ti. Eres mi vida, mi alegría, y mi todo.</p>
+            <p>Si alguna vez te sientes perdida o sola, recuerda estas palabras y deja que mi amor te envuelva. Cada letra lleva mi corazón latiendo por ti, cada palabra es un pedazo de lo que eres para mí. Eres mi razón, mi sol en los días grises, mi alegría infinita. No hace falta que busques más pruebas de lo que significas para mí, porque tú eres mi vida, mi todo, y siempre serás lo más importante de mi mundo.</p>
         </div>
         """, unsafe_allow_html=True)
 
-    if st.button("Ver mi promesa para ti"):
+    if st.button("Ver Mi Promesa Para Ti"):
         st.session_state.page = "promesa"
 
 elif st.session_state.page == "promesa":
@@ -254,6 +254,6 @@ elif st.session_state.page == "promesa":
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("Volver al mensaje bonito"):
+    if st.button("Volver al Mensaje Bonito"):
         st.session_state.page = "gran_mensaje"
 
