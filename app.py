@@ -96,9 +96,10 @@ if st.session_state.page == "start":
     st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
     st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
     st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
+
+    # Cambia la página en sesión cuando se presiona
     if st.button("Comenzar"):
         st.session_state.page = "questions"
-        st.experimental_rerun()
 
 elif st.session_state.page == "questions":
     st.markdown('<h2 style="color: white;">Quiero conocerte mejor, responde porfa 😊</h2>', unsafe_allow_html=True)
@@ -119,3 +120,5 @@ elif st.session_state.page == "questions":
     if st.button("Enviar respuestas") and not st.session_state.submitted:
         st.session_state.submitted = True
         st.success("¡Gracias por compartir conmigo! ❤️")
+
+# Listo, no hay recarga forzada ni errores
