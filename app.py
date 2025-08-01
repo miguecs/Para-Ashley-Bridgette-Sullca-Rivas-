@@ -75,7 +75,7 @@ st.markdown("""
 st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
 st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
 
-st.markdown('<div class="confirmation-box">¡Listo para empezar! ❤️</div>', unsafe_allow_html=True)
+st.markdown('<div class="confirmation-box">¡Listo para empezar!</div>', unsafe_allow_html=True)
 
 if st.button("Comenzar"):
     st.session_state.clicked = True
