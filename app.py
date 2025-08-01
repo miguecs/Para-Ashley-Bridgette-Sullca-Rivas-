@@ -10,15 +10,7 @@ st.markdown("""
 
     <style>
     .stApp {
-        background-color: #4b0082; /* morado oscuro */
-        background-image:
-          url("data:image/svg+xml;utf8,
-            <svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24' fill='none' stroke='%23FFC0CB' stroke-opacity='0.15' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
-              <path d='M12 21s-6-4.35-9-8.5a5 5 0 0 1 7-7 5 5 0 0 1 7 7c-3 4.15-9 8.5-9 8.5z'/>
-            </svg>");
-        background-repeat: repeat;
-        background-position: center;
-        background-size: 30px 30px;
+        background-color: #4b0082;  /* morado oscuro */
         color: black;
         font-family: 'Pacifico', cursive;
         display: flex;
@@ -36,6 +28,7 @@ st.markdown("""
         max-width: 600px;
         margin: 10px auto;
     }
+    /* Para que el nombre de Ashley no haga salto de línea */
     .single-line {
         white-space: nowrap;
     }
