@@ -5,7 +5,6 @@ import os
 
 st.set_page_config(page_title="Para Ashley", layout="centered")
 
-# Fonts + styles
 st.markdown("""
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
@@ -126,7 +125,6 @@ if 'page' not in st.session_state:
 if 'selected_card' not in st.session_state:
     st.session_state.selected_card = None
 
-# Navegación entre páginas
 if st.session_state.page == "inicio":
     st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
     st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
@@ -255,3 +253,21 @@ elif st.session_state.page == "promesa":
     if st.button("🌹 Volver al Mensaje Bonito 🌹"):
         st.session_state.page = "gran_mensaje"
 
+    st.markdown("#### Botón para descifrar")
+
+    fecha_input = st.text_input("Ingresa la fecha importante (formato: DD-MM-AAAA)", placeholder="Ej. 24-06-2023")
+
+    if st.button("Descifrar Mensaje"):
+        fecha_correcta = "24-06-2023"  # <-- Cambia esto por la fecha que tú consideres especial
+
+        if fecha_input.strip() == fecha_correcta:
+            st.success("¡Correcto! Aquí está tu mensaje secreto:")
+            st.markdown("""
+            <div class="card-message">
+                <p>Este mensaje solo se muestra porque tú y yo sabemos lo especial que es esa fecha.</p>
+                <p>Desde ese día, todo cambió en mí. Supe que eras tú. Supe que eras la persona con la que quiero compartir mi vida.</p>
+                <p>Gracias por existir. Gracias por ser tú. Te amo con todo mi ser.</p>
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.error("Fecha incorrecta. Intenta con otra.")
