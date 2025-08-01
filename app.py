@@ -244,14 +244,16 @@ elif st.session_state.page == "cartas_abrelo":
 
 elif st.session_state.page == "promesa":
     st.markdown("""
-    <div class="card-message" style="background: rgba(255, 255, 255, 0.25); color: white;">
-        <p><strong>Mi promesa para ti, Ashley:</strong></p>
-        <p>Prometo estar a tu lado en cada paso, en cada sonrisa y en cada lágrima. Mi amor será constante, paciente y sincero.</p>
-        <p>Quiero construir contigo un camino lleno de confianza, respeto y alegría. Eres mi prioridad, hoy y siempre.</p>
-        <p>Te amo con todo mi corazón.</p>
-        <p>— Miguel</p>
+    <div class="card-message">
+        <p>Querida Ashley,</p>
+        <p>Te hago esta promesa con todo mi corazón:</p>
+        <p>Prometo estar a tu lado en cada paso, en las alegrías y en las dificultades, sin importar el tiempo que pase.</p>
+        <p>Te brindaré paciencia, respeto y amor sincero, cuidando siempre de ti y de nuestro vínculo.</p>
+        <p>Prometo ser honesto y esforzarme cada día para construir juntos un futuro lleno de felicidad y sueños cumplidos.</p>
+        <p>No importa cuántos años o décadas pasen, mi compromiso contigo es eterno.</p>
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("Volver al mensaje final"):
-        st.session_state.page = "mensaje_final"
+    if st.button("Volver al mensaje bonito"):
+        st.session_state.page = "gran_mensaje"
+
