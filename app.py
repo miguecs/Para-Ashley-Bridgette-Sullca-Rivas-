@@ -75,12 +75,10 @@ st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_
 
 audio_url = "https://github.com/miguecs/Para-Ashley-Bridgette-Sullca-Rivas-/raw/main/Elvis%20Presley%20-%20Can't%20Help%20Falling%20In%20Love.mp3"
 
-st.markdown(f"""
-<audio autoplay loop controls style="display:none;">
-  <source src="{audio_url}" type="audio/mpeg">
-  Tu navegador no soporta el elemento de audio.
-</audio>
-""", unsafe_allow_html=True)
-
 if st.button("Comenzar"):
-    st.session_state.clicked = True
+    st.markdown(f"""
+    <audio autoplay loop controls>
+      <source src="{audio_url}" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+    """, unsafe_allow_html=True)
