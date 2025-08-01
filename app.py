@@ -254,11 +254,11 @@ elif st.session_state.page == "promesa":
         st.session_state.page = "gran_mensaje"
 
         
-    st.markdown("### Botón para Descifrar")
+    st.markdown("### 🤨 Botón para Descifrar 🤨")
 
     with st.form("descifrar_form"):
-        fecha_input = st.text_input("Introduce la fecha importante (Pista: 5:00 am) (Formato: dd-mm-aaaa)")
-        submitted = st.form_submit_button("Descifrar")
+        fecha_input = st.text_input("Introduce la fecha importante (Pista: 5:00 am) (Formato: DD-MM-AAAA)")
+        submitted = st.form_submit_button("😨 Descifrar 😨")
 
         if submitted:
             if fecha_input.strip() == "24-01-2022":
@@ -267,7 +267,7 @@ elif st.session_state.page == "promesa":
                 <div class="card-message">
                     <p>Ese día comenzó todo... El inicio de lo que para mí es lo más bonito que he vivido.</p>
                     <p>Desde ese 24 de enero, no hay un solo día en el que no haya pensado en ti, en cómo has transformado mi vida y en cómo quiero seguir construyendo algo eterno contigo.</p>
-                    <p>Gracias por existir. Gracias por quedarte. Te amo con todo mi corazón, Ashley.</p>
+                    <p>Gracias por existir. Gracias por quedarte. ❤️ Te amo con todo mi corazón, Ashley ❤️.</p>
                 </div>
                 """, unsafe_allow_html=True)
             else:
