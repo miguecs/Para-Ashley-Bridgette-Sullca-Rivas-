@@ -1,22 +1,23 @@
 import streamlit as st
 
-# Configuración inicial
+# Configurar la página
 st.set_page_config(page_title="Para Ashley 💖", layout="centered")
 
-# Inicializar el estado de la app
+# Controlador de páginas
 if 'page' not in st.session_state:
     st.session_state.page = 1
 
-# Estilos comunes
+# Estilos personalizados
 st.markdown("""
     <style>
     .stApp {
-        background-color: #ffe6f0;
+        background-color: #e6ccff; /* Morado claro */
         font-family: 'Segoe UI', sans-serif;
         padding-top: 50px;
+        color: black;
     }
-    h1, h2, h3, h4 {
-        color: #b30059;
+    h1, h2, h3, h4, p {
+        color: black !important;
         text-align: center;
     }
     </style>
