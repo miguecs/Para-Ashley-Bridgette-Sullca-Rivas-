@@ -250,9 +250,6 @@ elif st.session_state.page == "promesa":
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("🌹 Volver al Mensaje Bonito 🌹"):
-        st.session_state.page = "gran_mensaje"
-
         
     st.markdown("### 🤨 Botón para Descifrar 🤨")
 
@@ -272,3 +269,6 @@ elif st.session_state.page == "promesa":
                 """, unsafe_allow_html=True)
             else:
                 st.error("Fecha incorrecta. Intenta de nuevo con la fecha que marcó un antes y un después.")
+
+    if st.button("🌹 Volver al Mensaje Bonito 🌹"):
+        st.session_state.page = "gran_mensaje"
