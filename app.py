@@ -69,16 +69,36 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
-st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
-st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
-
 audio_url = "https://github.com/miguecs/Para-Ashley-Bridgette-Sullca-Rivas-/raw/main/Elvis%20Presley%20-%20Can't%20Help%20Falling%20In%20Love.mp3"
 
-if st.button("Comenzar"):
-    st.markdown(f"""
-    <audio autoplay loop controls>
-      <source src="{audio_url}" type="audio/mpeg">
-      Tu navegador no soporta el elemento de audio.
-    </audio>
-    """, unsafe_allow_html=True)
+# Insertar audio con autoplay desde el inicio (puede que el navegador lo bloquee)
+st.markdown(f"""
+<audio autoplay loop controls style="display:none;">
+  <source src="{audio_url}" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+""", unsafe_allow_html=True)
+
+# Controlar flujo con session_state
+if 'started' not in st.session_state:
+    st.session_state.started = False
+
+if not st.session_state.started:
+    # Pantalla inicial
+    st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
+    st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
+    st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
+
+    if st.button("Comenzar"):
+        st.session_state.started = True
+        st.experimental_rerun()
+else:
+    # Mostrar preguntas
+    st.markdown('<h2 style="color: white;">Pregunta 1</h2>', unsafe_allow_html=True)
+    respuesta1 = st.text_input("¿Cuál es tu canción favorita?", key="p1")
+
+    st.markdown('<h2 style="color: white;">Pregunta 2</h2>', unsafe_allow_html=True)
+    respuesta2 = st.text_area("¿Qué es lo que más te gusta de ella?", key="p2")
+
+    if st.button("Enviar respuestas"):
+        st.success("¡Gracias por tus respuestas!")
