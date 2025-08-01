@@ -17,26 +17,22 @@ st.markdown("""
         margin: 0 20px;
         text-align: center;
     }
-    h2 {
-        font-size: 4rem;
-        margin: 1rem 0 0.6rem 0; /* más espacio arriba y abajo */
-        font-weight: normal;
-    }
-    .confirmation-box {
-        margin-top: 30px;
-        padding: 20px 40px;
-        background: rgba(255, 255, 255, 0.15); /* cuadro transparente */
-        border-radius: 15px;
+    .names, .confirmation-box {
         font-size: 1.8rem;
         color: black;
         font-family: 'Pacifico', cursive;
         max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 10px auto;
+    }
+    .confirmation-box {
+        margin-top: 20px;
+        padding: 20px 40px;
+        background: rgba(255, 255, 255, 0.15); /* cuadro transparente */
+        border-radius: 15px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
     div.stButton {
-        margin-top: 50px;
+        margin-top: 40px;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -62,14 +58,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<h2>De: Miguel Caso</h2>", unsafe_allow_html=True)
-st.markdown("<h2>Para: Ashley Sullca Rivas</h2>", unsafe_allow_html=True)
+st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
+st.markdown('<div class="names">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
 
-if "clicked" not in st.session_state:
-    st.session_state.clicked = False
+# Mensaje siempre visible debajo de los nombres
+st.markdown('<div class="confirmation-box">¡Listo para empezar! ❤️</div>', unsafe_allow_html=True)
 
 if st.button("Comenzar"):
     st.session_state.clicked = True
-
-if st.session_state.clicked:
-    st.markdown('<div class="confirmation-box">¡Listo para empezar! ❤️</div>', unsafe_allow_html=True)
