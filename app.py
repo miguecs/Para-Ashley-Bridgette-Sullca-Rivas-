@@ -58,34 +58,28 @@ st.markdown("""
         margin-top: 80px;
         line-height: 1.6;
     }
-    .card-button {
-        font-size: 1.4rem;
-        padding: 12px 25px;
-        margin: 15px 10px;
-        border-radius: 15px;
-        background-color: #a64ca6;
-        color: black;
-        border: none;
-        font-family: 'Pacifico', cursive;
-        box-shadow: 2px 2px 12px rgba(0,0,0,0.35);
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    .card-button:hover {
-        background-color: #8b3d8b;
-        color: white;
-        transform: scale(1.05);
-    }
     .card-message {
-        background: rgba(255, 255, 255, 0.15);
+        font-family: 'Pacifico', cursive;
+        font-size: 1.5rem;
         color: white;
-        padding: 20px 30px;
-        border-radius: 20px;
         max-width: 700px;
         margin: 30px auto;
-        font-family: 'Caviar Dreams', sans-serif;
-        font-size: 1.5rem;
         line-height: 1.6;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 15px;
+        padding: 25px;
+    }
+    .promise-message {
+        font-family: 'Caviar Dreams', sans-serif;
+        font-size: 1.7rem;
+        color: white;
+        max-width: 700px;
+        margin: 50px auto;
+        line-height: 1.8;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+        padding: 30px;
+        font-weight: 600;
     }
     div.stButton {
         margin-top: 40px;
@@ -101,6 +95,7 @@ st.markdown("""
         border: none;
         font-family: 'Pacifico', cursive;
         box-shadow: 2px 2px 12px rgba(0,0,0,0.35);
+        cursor: pointer;
     }
     div.stButton > button:hover {
         background-color: #8b3d8b;
@@ -122,13 +117,10 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# Estado inicial
+# Páginas
 if 'page' not in st.session_state:
     st.session_state.page = "inicio"
-if 'selected_card' not in st.session_state:
-    st.session_state.selected_card = None
 
-# Navegación entre páginas
 if st.session_state.page == "inicio":
     st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
     st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
@@ -185,7 +177,6 @@ elif st.session_state.page == "mensaje_final":
         <p>Quiero que sepas algo: no importa cuánto tiempo pase, si tengo que esperar años o incluso décadas, lo haré. Porque tú vales eso y mucho más.</p>
         <p>Quiero ser alguien que te acompañe en lo bueno y lo difícil. No porque sea perfecto, sino porque mi intención contigo es verdadera. Quiero cuidarte, con paciencia, con respeto, y sobre todo, con amor.</p>
         <p>Sé que las palabras pueden ser bonitas, pero mis acciones con el tiempo quiero que las respalden. Estoy aquí para ti. Siempre.</p>
-        <p>— Miguel</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -201,43 +192,65 @@ elif st.session_state.page == "gran_mensaje":
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("Ábrelo el día que..."):
-        st.session_state.selected_card = None
-        st.session_state.page = "cartas_abrelo"
+    if st.button("Continuar"):
+        st.session_state.page = "cartas"
 
-elif st.session_state.page == "cartas_abrelo":
-    st.markdown('<h2 style="color: white; font-family: Caviar Dreams, sans-serif;">Ábrelo el día que...</h2>', unsafe_allow_html=True)
+elif st.session_state.page == "cartas":
+    st.markdown("<h2 style='color:white;'>Ábrelo el día que…</h2>", unsafe_allow_html=True)
 
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        if st.button("Estés triste 😔"):
-            st.session_state.selected_card = "triste"
-    with col2:
-        if st.button("Dudes de mí 💭"):
-            st.session_state.selected_card = "dudas"
-    with col3:
-        if st.button("Quieras recordar que te amo ❤️"):
-            st.session_state.selected_card = "amo"
+    if st.button("Ábrelo si estás triste 😔"):
+        st.session_state.selected_card = "triste"
+    elif st.button("Ábrelo si alguna vez dudas de mí 💭"):
+        st.session_state.selected_card = "dudas"
+    elif st.button("Ábrelo si quieres recordar que te amo ❤️"):
+        st.session_state.selected_card = "amor"
 
-    # Mostrar mensaje según botón elegido
-    if st.session_state.selected_card == "triste":
-        st.markdown("""
-        <div class="card-message">
-            <p>Mi amor, si estás triste, recuerda que después de la tormenta siempre llega la calma. Estoy aquí para ti, aunque no lo veas, siempre te estoy cuidando con mi amor infinito.</p>
-        </div>
-        """, unsafe_allow_html=True)
-    elif st.session_state.selected_card == "dudas":
-        st.markdown("""
-        <div class="card-message">
-            <p>Cuando dudes de mí, mira hacia atrás y ve todo lo que hemos vivido, lo mucho que he dado y lo sincero que soy. Confía en que mi amor por ti es verdadero y sin condiciones.</p>
-        </div>
-        """, unsafe_allow_html=True)
-    elif st.session_state.selected_card == "amo":
-        st.markdown("""
-        <div class="card-message">
-            <p>Si quieres recordar que te amo, mira este mensaje y siente mi corazón latiendo por ti. Eres mi vida, mi alegría, y mi todo.</p>
-        </div>
-        """, unsafe_allow_html=True)
+    if 'selected_card' in st.session_state:
+        if st.session_state.selected_card == "triste":
+            st.markdown("""
+            <div class="card-message">
+            Querida Ashley,<br><br>
+            Sé que a veces la tristeza puede pesar mucho, pero recuerda que no estás sola.<br>
+            Estoy aquí para escucharte, para abrazarte aunque sea a la distancia.<br>
+            Todo pasa y siempre saldremos adelante juntos.<br><br>
+            Te quiero y te cuido.<br>
+            </div>
+            """, unsafe_allow_html=True)
 
-    if st.button("Volver al mensaje final"):
-        st.session_state.page = "gran_mensaje"
+        elif st.session_state.selected_card == "dudas":
+            st.markdown("""
+            <div class="card-message">
+            Querida Ashley,<br><br>
+            Si alguna vez dudas de mí, recuerda que mi amor por ti es sincero y constante.<br>
+            No importa las circunstancias, siempre estaré para ti.<br>
+            Mi compromiso es verdadero y nunca te fallaré.<br><br>
+            Confía en mí.<br>
+            </div>
+            """, unsafe_allow_html=True)
+
+        elif st.session_state.selected_card == "amor":
+            st.markdown("""
+            <div class="card-message">
+            Querida Ashley,<br><br>
+            Si necesitas recordar cuánto te amo, mira dentro de mi corazón.<br>
+            Eres la luz que ilumina mis días y la fuerza que me impulsa.<br>
+            Estoy aquí para ti, hoy y siempre.<br><br>
+            Con todo mi amor.<br>
+            </div>
+            """, unsafe_allow_html=True)
+
+    if st.button("Continuar"):
+        st.session_state.page = "promesa"
+
+elif st.session_state.page == "promesa":
+    st.markdown("""
+    <div class="promise-message">
+        <p><strong>Promesa</strong></p>
+        <p>Querida Ashley,</p>
+        <p>Te hago esta promesa con todo mi corazón:</p>
+        <p>Prometo estar a tu lado en cada paso, en las alegrías y en las dificultades, sin importar el tiempo que pase.</p>
+        <p>Te brindaré paciencia, respeto y amor sincero, cuidando siempre de ti y de nuestro vínculo.</p>
+        <p>Prometo ser honesto y esforzarme cada día para construir juntos un futuro lleno de felicidad y sueños cumplidos.</p>
+        <p>No importa cuántos años o décadas pasen, mi compromiso contigo es eterno.</p>
+    </div>
+    """, unsafe_allow_html=True)
