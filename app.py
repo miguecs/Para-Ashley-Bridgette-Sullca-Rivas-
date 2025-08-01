@@ -2,11 +2,20 @@ import streamlit as st
 
 st.set_page_config(page_title="Para Ashley", layout="centered")
 
-# Insertar audio
-audio_url = "https://www.example.com/cant_help_falling_in_love.mp3"  # Cambia por un enlace válido
+# Cambia este enlace por el link real donde alojas la canción
+audio_url = "https://tu-repositorio.com/cant_help_falling_in_love.mp3"
 
-st.audio(audio_url, format='audio/mp3', start_time=0)
+# Código HTML para reproducir audio automáticamente y en loop sin controles visibles
+audio_html = f"""
+<audio autoplay loop>
+  <source src="{audio_url}" type="audio/mp3">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+"""
 
+st.markdown(audio_html, unsafe_allow_html=True)
+
+# Resto de tu código CSS y contenido aquí...
 st.markdown("""
     <!-- Cargar fuente Pacifico para mensaje y botón -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
