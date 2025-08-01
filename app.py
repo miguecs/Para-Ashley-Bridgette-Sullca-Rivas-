@@ -3,9 +3,9 @@ import streamlit as st
 st.set_page_config(page_title="Para Ashley", layout="centered")
 
 st.markdown("""
-    <!-- Cargar fuente Pacifico para el mensaje y botón -->
+    <!-- Cargar fuente Pacifico para mensaje y botón -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <!-- Cargar fuente Caviar Dreams para los nombres -->
+    <!-- Cargar fuente Caviar Dreams para nombres -->
     <link href="https://fonts.cdnfonts.com/css/caviar-dreams" rel="stylesheet">
 
     <style>
@@ -22,20 +22,24 @@ st.markdown("""
         text-align: center;
     }
     .names {
-        font-family: 'Caviar Dreams', sans-serif;  /* Fuente Caviar Dreams */
+        font-family: 'Caviar Dreams', sans-serif;
         font-size: 4rem;
         color: black;
         max-width: 600px;
         margin: 10px auto;
     }
+    /* Para que el nombre de Ashley no haga salto de línea */
+    .single-line {
+        white-space: nowrap;
+    }
     .confirmation-box {
         margin-top: 20px;
         padding: 20px 40px;
-        background: rgba(255, 255, 255, 0.15); /* cuadro transparente */
+        background: rgba(255, 255, 255, 0.15);
         border-radius: 15px;
         font-size: 1.8rem;
         color: black;
-        font-family: 'Pacifico', cursive;  /* Fuente Pacifico */
+        font-family: 'Pacifico', cursive;
         max-width: 400px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         margin-left: auto;
@@ -52,7 +56,7 @@ st.markdown("""
         padding: 15px 50px;
         cursor: pointer;
         border-radius: 20px;
-        background-color: #a64ca6; /* morado medio */
+        background-color: #a64ca6;
         border: none;
         color: black;
         font-family: 'Pacifico', cursive;
@@ -69,9 +73,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
-st.markdown('<div class="names">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
+st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
 
-# Mensaje siempre visible debajo de los nombres
 st.markdown('<div class="confirmation-box">¡Listo para empezar! ❤️</div>', unsafe_allow_html=True)
 
 if st.button("Comenzar"):
