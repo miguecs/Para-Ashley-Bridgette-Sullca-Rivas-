@@ -1,7 +1,11 @@
 import streamlit as st
+import pandas as pd
+from datetime import datetime
+import os
 
 st.set_page_config(page_title="Para Ashley", layout="centered")
 
+# Estilos y fuentes
 st.markdown("""
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/caviar-dreams" rel="stylesheet">
@@ -77,9 +81,10 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# URL directa de la canción
 audio_url = "https://github.com/miguecs/Para-Ashley-Bridgette-Sullca-Rivas-/raw/main/Elvis%20Presley%20-%20Can't%20Help%20Falling%20In%20Love.mp3"
 
-# Música siempre sonando y centrada arriba
+# Música siempre visible y centrada
 st.markdown(f"""
 <div class="audio-player">
   <audio autoplay loop controls style="width: 100%;">
@@ -89,12 +94,14 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
+# Estado inicial
 if 'page' not in st.session_state:
     st.session_state.page = "start"
 
 if 'submitted' not in st.session_state:
     st.session_state.submitted = False
 
+# Página inicial
 if st.session_state.page == "start":
     st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
     st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
@@ -103,6 +110,7 @@ if st.session_state.page == "start":
     if st.button("Comenzar"):
         st.session_state.page = "questions"
 
+# Página de preguntas
 elif st.session_state.page == "questions":
     st.markdown('<h2 style="color: white;">Quiero conocerte mejor, responde porfa 😊</h2>', unsafe_allow_html=True)
 
@@ -122,3 +130,20 @@ elif st.session_state.page == "questions":
     if st.button("Enviar respuestas") and not st.session_state.submitted:
         st.session_state.submitted = True
         st.success("¡Gracias por compartir conmigo! ❤️")
+
+        # Guardar en archivo CSV
+        respuestas_dict = {
+            "timestamp": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")],
+            "pregunta_1": [respuestas[0]],
+            "pregunta_2": [respuestas[1]],
+            "pregunta_3": [respuestas[2]],
+            "pregunta_4": [respuestas[3]],
+            "pregunta_5": [respuestas[4]],
+        }
+
+        df = pd.DataFrame(respuestas_dict)
+
+        if os.path.exists("respuestas.csv"):
+            df.to_csv("respuestas.csv", mode='a', header=False, index=False)
+        else:
+            df.to_csv("respuestas.csv", index=False)
