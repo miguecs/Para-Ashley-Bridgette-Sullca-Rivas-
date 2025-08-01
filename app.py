@@ -19,7 +19,7 @@ st.markdown("""
     }
     h2 {
         font-size: 4rem;
-        margin: 0.2rem 0;
+        margin: 1rem 0 0.6rem 0; /* más espacio arriba y abajo */
         font-weight: normal;
     }
     .confirmation-box {
@@ -31,6 +31,9 @@ st.markdown("""
         color: black;
         font-family: 'Pacifico', cursive;
         max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
     div.stButton {
         margin-top: 50px;
@@ -40,19 +43,21 @@ st.markdown("""
     }
     div.stButton > button {
         font-size: 24px;
-        padding: 15px 40px;
+        padding: 15px 50px;
         cursor: pointer;
-        border-radius: 15px;
+        border-radius: 20px;
         background-color: #a64ca6; /* morado medio */
         border: none;
         color: black;
         font-family: 'Pacifico', cursive;
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-        transition: background-color 0.3s ease;
+        box-shadow: 2px 2px 12px rgba(0,0,0,0.35);
+        transition: background-color 0.3s ease, transform 0.2s ease;
     }
     div.stButton > button:hover {
         background-color: #8b3d8b;
         color: white;
+        transform: scale(1.05);
+        box-shadow: 3px 3px 15px rgba(0,0,0,0.45);
     }
     </style>
 """, unsafe_allow_html=True)
@@ -60,7 +65,6 @@ st.markdown("""
 st.markdown("<h2>DE: Miguel Caso Poma</h2>", unsafe_allow_html=True)
 st.markdown("<h2>PARA: Ashley Sullca Rivas</h2>", unsafe_allow_html=True)
 
-# Control para mostrar mensaje solo después de pulsar botón
 if "clicked" not in st.session_state:
     st.session_state.clicked = False
 
