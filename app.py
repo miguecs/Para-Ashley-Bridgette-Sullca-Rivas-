@@ -2,20 +2,31 @@ import streamlit as st
 
 st.set_page_config(page_title="Para Ashley", layout="centered")
 
-# Cambia este enlace por el link real donde alojas la canción
-audio_url = https://drive.google.com/file/d/1CxfoHF4Lx-lsC7e99y3Bnw-i_j__miM_/view?usp=sharing
+# Cambia esto con tu enlace directo de Google Drive (ver instrucciones arriba)
+audio_url = https://drive.google.com/uc?export=download&id=1CxfoHF4Lx-lsC7e99y3Bnw-i_j__miM_
 
-# Código HTML para reproducir audio automáticamente y en loop sin controles visibles
-audio_html = f"""
-<audio autoplay loop>
-  <source src="{audio_url}" type="audio/mp3">
-  Tu navegador no soporta el elemento de audio.
-</audio>
-"""
+# Inicializar estado
+if "clicked" not in st.session_state:
+    st.session_state.clicked = False
+if "music_playing" not in st.session_state:
+    st.session_state.music_playing = False
 
-st.markdown(audio_html, unsafe_allow_html=True)
+# Botón para iniciar música
+if not st.session_state.music_playing:
+    if st.button("▶️ Reproducir música"):
+        st.session_state.music_playing = True
 
-# Resto de tu código CSS y contenido aquí...
+# Inyectar reproductor de audio HTML con autoplay/loop
+if st.session_state.music_playing:
+    audio_html = f"""
+    <audio autoplay loop>
+        <source src="{audio_url}" type="audio/mp3">
+        Tu navegador no soporta audio.
+    </audio>
+    """
+    st.markdown(audio_html, unsafe_allow_html=True)
+
+# HTML y estilos
 st.markdown("""
     <!-- Cargar fuente Pacifico para mensaje y botón -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -24,7 +35,7 @@ st.markdown("""
 
     <style>
     .stApp {
-        background-color: #4b0082;  /* morado oscuro */
+        background-color: #4b0082;
         color: black;
         font-family: 'Pacifico', cursive;
         display: flex;
@@ -42,7 +53,6 @@ st.markdown("""
         max-width: 600px;
         margin: 10px auto;
     }
-    /* Para que el nombre de Ashley no haga salto de línea */
     .single-line {
         white-space: nowrap;
     }
@@ -86,6 +96,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# Mensajes en pantalla
 st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
 st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
 
