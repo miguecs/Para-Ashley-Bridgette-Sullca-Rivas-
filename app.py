@@ -13,11 +13,12 @@ st.markdown("""
         font-family: 'Pacifico', cursive;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         height: 100vh;
         margin: 0 20px;
         text-align: center;
+        padding-top: 20px;
     }
     .names {
         font-family: 'Caviar Dreams', sans-serif;
@@ -66,25 +67,29 @@ st.markdown("""
         transform: scale(1.05);
         box-shadow: 3px 3px 15px rgba(0,0,0,0.45);
     }
+    .audio-player {
+        margin-bottom: 30px;
+        width: 320px;
+    }
     </style>
 """, unsafe_allow_html=True)
 
 audio_url = "https://github.com/miguecs/Para-Ashley-Bridgette-Sullca-Rivas-/raw/main/Elvis%20Presley%20-%20Can't%20Help%20Falling%20In%20Love.mp3"
 
-# Música siempre sonando en background (oculto pero con controles por si quiere pausar)
+# Música siempre sonando y centrada arriba
 st.markdown(f"""
-<audio autoplay loop controls style="position: fixed; bottom: 10px; left: 10px; width: 300px; z-index: 9999;">
-  <source src="{audio_url}" type="audio/mpeg">
-  Tu navegador no soporta el elemento de audio.
-</audio>
+<div class="audio-player">
+  <audio autoplay loop controls style="width: 100%;">
+    <source src="{audio_url}" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+</div>
 """, unsafe_allow_html=True)
 
-# Inicializamos la página si no existe
 if 'page' not in st.session_state:
     st.session_state.page = "start"
 
 if st.session_state.page == "start":
-    # Pantalla inicial
     st.markdown('<div class="names">De: Miguel Caso</div>', unsafe_allow_html=True)
     st.markdown('<div class="names single-line">Para: Ashley Sullca Rivas</div>', unsafe_allow_html=True)
     st.markdown('<div class="confirmation-box">¡Lista Para Empezar!</div>', unsafe_allow_html=True)
@@ -93,14 +98,13 @@ if st.session_state.page == "start":
         st.experimental_rerun()
 
 elif st.session_state.page == "questions":
-    # Preguntas para conocerla
     st.markdown('<h2 style="color: white;">Quiero conocerte mejor, responde porfa 😊</h2>', unsafe_allow_html=True)
 
     preguntas = [
         "¿Cuál es tu sueño más grande?",
-        "¿Qué te hace feliz de verdad?",
-        "¿Cuál es tu recuerdo favorito de la infancia?",
-        "¿Qué valoras más en una amistad?",
+        "¿Cómo supiste que sí me querías enserio?",
+        "¿Por qué conmigo sí quieres hacer las cosas bien?",
+        "Para ti, ¿qué es lo que me hace diferente a los demás?",
         "¿Qué te gustaría que supiera sobre ti?"
     ]
 
@@ -110,9 +114,7 @@ elif st.session_state.page == "questions":
         respuestas.append(respuesta)
 
     if st.button("Enviar respuestas"):
-        # Aquí puedes hacer lo que quieras con las respuestas, guardarlas o mostrarlas
         st.success("¡Gracias por compartir conmigo! ❤️")
-        # Por ejemplo mostrar resumen:
         st.markdown("### Tus respuestas:")
         for i, (p, r) in enumerate(zip(preguntas, respuestas), 1):
             st.markdown(f"**{i}. {p}**")
