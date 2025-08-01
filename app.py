@@ -208,13 +208,13 @@ elif st.session_state.page == "cartas_abrelo":
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        if st.button("😔 Estés Triste 😔"):
+        if st.button("Estés Triste 😔"):
             st.session_state.selected_card = "triste"
     with col2:
-        if st.button("🤔 Dudes de Mí 🤔"):
+        if st.button("Dudes de Mí 🤔"):
             st.session_state.selected_card = "dudas"
     with col3:
-        if st.button("❤️ Quieras Recordar que Te Amo ❤️"):
+        if st.button("Quieras Recordar que Te Amo ❤️"):
             st.session_state.selected_card = "amo"
 
 
