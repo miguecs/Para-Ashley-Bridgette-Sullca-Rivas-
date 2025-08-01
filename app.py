@@ -253,21 +253,22 @@ elif st.session_state.page == "promesa":
     if st.button("🌹 Volver al Mensaje Bonito 🌹"):
         st.session_state.page = "gran_mensaje"
 
-    st.markdown("#### Botón para descifrar!!")
+        
+    st.markdown("### Botón para Descifrar")
 
-    fecha_input = st.text_input("Ingresa la fecha importante (Pista: 5:00 am) (Formato: DD-MM-AAAA)", placeholder="Ej. 16-03-2020")
+    with st.form("descifrar_form"):
+        fecha_input = st.text_input("Introduce la fecha importante (Pista: 5:00 am) (Formato: dd-mm-aaaa)")
+        submitted = st.form_submit_button("Descifrar")
 
-    if st.button("🤨Descifrar Mensaje🤨"):
-        fecha_correcta = "24-06-2023"  # <-- Cambia esto por la fecha que tú consideres especial
-
-        if fecha_input.strip() == fecha_correcta:
-            st.success("¡Correcto! Aquí está tu mensaje secreto:")
-            st.markdown("""
-            <div class="card-message">
-                <p>Este mensaje solo se muestra porque tú y yo sabemos lo especial que es esa fecha.</p>
-                <p>Desde ese día, todo cambió en mí. Supe que eras tú. Supe que eras la persona con la que quiero compartir mi vida.</p>
-                <p>Gracias por existir. Gracias por ser tú. Te amo con todo mi ser.</p>
-            </div>
-            """, unsafe_allow_html=True)
-        else:
-            st.error("Fecha incorrecta. Intenta con otra.")
+        if submitted:
+            if fecha_input.strip() == "24-01-2022":
+                st.success("¡Fecha correcta! Aquí tienes tu mensaje especial:")
+                st.markdown("""
+                <div class="card-message">
+                    <p>Ese día comenzó todo... El inicio de lo que para mí es lo más bonito que he vivido.</p>
+                    <p>Desde ese 24 de enero, no hay un solo día en el que no haya pensado en ti, en cómo has transformado mi vida y en cómo quiero seguir construyendo algo eterno contigo.</p>
+                    <p>Gracias por existir. Gracias por quedarte. Te amo con todo mi corazón, Ashley.</p>
+                </div>
+                """, unsafe_allow_html=True)
+            else:
+                st.error("Fecha incorrecta. Intenta de nuevo con la fecha que marcó un antes y un después.")
