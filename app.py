@@ -286,36 +286,6 @@ elif st.session_state.page == "final_final":
     </div>
     """, unsafe_allow_html=True)
 
-import os
-import pandas as pd
-
-if 'admin' not in st.session_state:
-    st.session_state.admin = False
-
-st.sidebar.markdown("---")
-modo_admin = st.sidebar.checkbox("🔐 Modo Administrador")
-if modo_admin:
-    password = st.sidebar.text_input("Contraseña", type="password")
-    if password == "miguel123":
-        st.session_state.admin = True
-    else:
-        st.session_state.admin = False
-
-if st.session_state.admin:
-    st.markdown("## 📋 Respuestas Recibidas")
-
-    if os.path.exists("respuestas.csv"):
-        df = pd.read_csv("respuestas.csv")
-        st.dataframe(df)
-
-        import base64
-        csv = df.to_csv(index=False).encode('utf-8')
-        b64 = base64.b64encode(csv).decode()
-        href = f'<a href="data:file/csv;base64,{b64}" download="respuestas.csv">📥 Descargar CSV</a>'
-        st.markdown(href, unsafe_allow_html=True)
-    else:
-        st.info("Todavía no hay respuestas guardadas.")
-
     st.markdown("""
     <div class="love-message">
         <p>Gracias por tomarte el tiempo de leer cada palabra, responder con sinceridad, y llegar hasta aquí.</p>
@@ -328,6 +298,7 @@ if st.session_state.admin:
     if st.button("🌹 Volver a las cartas 🌹"):
         st.session_state.page = "cartas_abrelo"
         st.session_state.selected_card = None
+
 
 
 
