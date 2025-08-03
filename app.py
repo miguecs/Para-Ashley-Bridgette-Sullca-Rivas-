@@ -300,22 +300,3 @@ elif st.session_state.page == "final_final":
         st.session_state.selected_card = None
 
 
-
-elif st.session_state.page == "ver_respuestas":
-    st.markdown('<h2 style="color: white;">📋 Respuestas Guardadas</h2>', unsafe_allow_html=True)
-
-    password = st.text_input("Introduce la clave secreta para ver las respuestas:", type="password")
-    if password == "miclave123":  # Cambia esto por tu clave privada
-        if os.path.exists("respuestas.csv"):
-            df = pd.read_csv("respuestas.csv")
-            st.dataframe(df)
-        else:
-            st.warning("Aún no hay respuestas guardadas.")
-    elif password != "":
-        st.error("Contraseña incorrecta.")
-
-
-if st.button("Ver respuestas (solo Miguel)"):
-    st.session_state.page = "ver_respuestas"
-
-
